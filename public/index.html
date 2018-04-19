@@ -3,28 +3,12 @@
 <head>
   <meta charset="utf-8"></meta>
   <title>HomePage</title>
+  <link href="/css/main.css" rel="stylesheet">
   <script src="/socket.io/socket.io.js"></script>
-  <style>
-  body{
-    background-color: green
-  }
-  h1{
-    color: white;
-    text-align: center;
-    margin:auto;
-  }
-  </style>
+  <script src="/js/index.js"></script>
 </head>
 <body>
-  <h1>Welcome to the chat app</h1>
-  <script>
-    var socket = io()
-    socket.on('connect',()=>{
-      console.log('connected to the server')
-    })
-    socket.on('disconnect',()=>{
-      console.log('disconnected from server')
-    })
-  </script>
+   <h1>Welcome to the chat app</h1>
+   <p></p>
 </body>
 </html>
