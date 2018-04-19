@@ -1,0 +1,31 @@
+body{
+  background-color: gray;
+}
+h1{
+  color: white;
+  text-align: center;
+  margin:auto;
+}
+input {
+  height: 50px;
+  width: 500px;
+  border:3px solid blue;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: cursive;
+}
+input:focus{
+  border:3px solid green;
+}
+
+button {
+  height: 50px;
+  width: 100px;
+  font-size: 20px;
+  font-family: -webkit-body;
+  border-radius: 15px;
+  border: 2px solid blanchedalmond;
+  cursor: pointer;
+  box-shadow: inset 0px 0 10px 1px;
+  }

@@ -22,8 +22,9 @@ io.on('connection',(socket)=>{
   //2//
   socket.on('createMessage',(message)=>{
     console.log('createMessage',message)
-    // socket.emit('newMessage',generateMessage(message.from,message.text))
+     socket.emit('newMessage',generateMessage(message.from,message.text))
     socket.broadcast.emit('newMessage',generateMessage(message.from,message.text))
+
   })
 })
 
