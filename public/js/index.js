@@ -8,7 +8,8 @@ socket.on('disconnect',function(){
 
 socket.on('newMessage',function(message){//4//
   console.log('newMessage:',message)
-  $("#messages").append("<li>"+message.from+":"+message.text+"</li>")
+  var formateDate = moment(message.createdAt).format('h:mm a')
+  $("#messages").append("<li>"+message.from+" ("+formateDate+"):"+message.text+"</li>")
 })
 
 
@@ -40,6 +41,7 @@ $(function(){
       }
       locationbutton.attr('disabled', 'disabled').text("sending Location...");
       navigator.geolocation.getCurrentPosition(function(position){
+
         locationbutton.removeAttr('disabled').text("Send Location");
         socket.emit('creategeolocation',{
           latitude:position.coords.latitude,
@@ -52,7 +54,8 @@ $(function(){
   })
 
   socket.on('newLocationMessage',function(message){
-    var app ="<li>"+message.from+":<a target='_blank' href="+message.url+">My Current Location</a></li>"
+    var formatDate = moment(message.createdAt).format('h:mm a')
+    var app ="<li>"+message.from+"("+formatDate+"):<img src='/css/location.png' width='35px' height='35px'/><a target='_blank' href="+message.url+">My Current Location</a></li>"
     console.log()
     // var latlon =
    // var url="https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU"
