@@ -16,11 +16,13 @@ $(function(){
   $('#chatapp').on('submit',(e)=>{
     e.preventDefault()
     if($("[name=message]").val()){
-      socket.emit('createMessage',{
-        from:"User",
-        text:$("[name=message]").val(),
-        createdAt:new Date().getTime()
-      })
+
+        socket.emit('createMessage',{
+          from:"User",
+          text:$("[name=message]").val()
+        },function(){
+          $("[name=message]").val('')
+        })
     }else{
       alert("Type something.")
     }
@@ -36,12 +38,15 @@ $(function(){
       if(!navigator.geolocation){
         return alert('Geolocation not supportes by your browser.')
       }
+      locationbutton.attr('disabled', 'disabled').text("sending Location...");
       navigator.geolocation.getCurrentPosition(function(position){
+        locationbutton.removeAttr('disabled').text("Send Location");
         socket.emit('creategeolocation',{
           latitude:position.coords.latitude,
           longitude:position.coords.longitude
         })
       },function(){
+        locationbutton.removeAttr('disabled').text("Send Location");
         alert('Unable to fetch location.')
       })
   })

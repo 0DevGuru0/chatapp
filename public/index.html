@@ -8,15 +8,22 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/index.js"></script>
 </head>
-<body>
-   <h1>Welcome to the chat app</h1>
-   <ol id="messages"></ol>
-   <form id="chatapp">
-    <center> <input name="message" type="text" placeholder="Type Your Message..."/><br>
-    <br><button>Send</button>
-    <button id="remove">Clear</button></center>
-  </form><br>
-   <center><button id="send-location">send location</button></center>
+<body class="chat">
+  <div class="chat__sidebar">
+    <h3>People</h3>
+    <div id="users"></div>
+  </div>
+  <div class="chat__main">
+    <ol id="messages" class="chat__messages"></ol>
+  <div class="chat__footer">
+    <form id="chatapp">
+        <input name="message" type="text" placeholder="Type Your Message..." autofocus autocomplete="off "/>
+        <button>Send</button>
+        <button id="remove">Clear</button>
+    </form>
+        <button id="send-location">Send Location</button></div>
 
+
+  </div>
 </body>
 </html>
